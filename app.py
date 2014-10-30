@@ -1,10 +1,33 @@
-from flask import Flask, request, render_template, redirect,session
+from flask import Flask, request, render_template, redirect, session, escape, url_for
+
+def new_user(username,password):
 
 
+def check_user(username, password):
 
 @app.route("/")
 def index():
-    return render_template("login.html")
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if check_user(username,password):
+            session['username'] = request.form['username']  
+        return redirect(url_for('restricted'))
+else:
+    return redirect(url_for('index'))
+    
+
+@app.route("/register", methods=["GET","POST"])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if new_user(username,password):
+            return redirect(url_for('register_success'))
+        else:
+            return redirect(url_for('register_failure'))
+
+
 
 @app.route("/logout")
 def logout():
