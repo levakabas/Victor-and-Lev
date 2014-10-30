@@ -28,7 +28,6 @@ def register():
             return redirect(url_for('register_failure'))
 
 
-
 @app.route("/logout")
 def logout():
     return render_template("logout.html")
@@ -44,6 +43,14 @@ def secret():
 @app.route("/restricted")
 def restricted():
     return render_tempalte("restricted.html")
+    
+@app.route("/register_success")
+def register_success():
+    return render_tempalte("register_success.html")
+    
+@app.route("/register_failure")
+def register_failure():
+    return render_tempalte("register_failure.html")
 
 if __name__=="__main__":
     app.debug=True
