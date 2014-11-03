@@ -5,8 +5,9 @@ def new_user(username,password):
 
 def check_user(username, password):
 
-@app.route("/")
-def index():
+@app.route("/", methods=["GET","POST"])
+@app.route("/login", methods=["GET","POST"])
+def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -14,7 +15,7 @@ def index():
             session['username'] = request.form['username']  
         return redirect(url_for('restricted'))
 else:
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
     
 
 @app.route("/register", methods=["GET","POST"])
@@ -42,7 +43,10 @@ def secret():
 
 @app.route("/restricted")
 def restricted():
-    return render_tempalte("restricted.html")
+    if 'username' in session:
+        return render_tempalte("restricted.html")
+    else:
+        return redirect(url_for('login'))
     
 @app.route("/register_success")
 def register_success():
