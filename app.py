@@ -44,7 +44,11 @@ def secret():
 @app.route("/restricted")
 def restricted():
     if 'username' in session:
-        return render_tempalte("restricted.html")
+        username = escape(session['username'])
+        password = 
+        studentid = 
+        pizza = 
+        return render_tempalte("restricted.html", username=username, password=password, studentid=studentid, pizza=pizza)
     else:
         return redirect(url_for('login'))
     
