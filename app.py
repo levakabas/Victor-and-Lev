@@ -1,9 +1,5 @@
 from flask import Flask, request, render_template, redirect, session, escape, url_for
-
-def new_user(username,password):
-
-
-def check_user(username, password):
+import mengo
 
 @app.route("/", methods=["GET","POST"])
 @app.route("/login", methods=["GET","POST"])
@@ -11,7 +7,7 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        if check_user(username,password):
+        if authenticate(username,password):
             session['username'] = request.form['username']  
         return redirect(url_for('restricted'))
 else:
