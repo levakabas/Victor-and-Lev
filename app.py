@@ -4,14 +4,16 @@ import mengo
 @app.route("/", methods=["GET","POST"])
 @app.route("/login", methods=["GET","POST"])
 def login():
-    if request.method == 'POST':
+    if request.method == 'GET':
+        return render_template('login.html')
+    else:
         username = request.form['username']
         password = request.form['password']
         if authenticate(username,password):
             session['username'] = request.form['username']  
-        return redirect(url_for('restricted'))
-else:
-    return redirect(url_for('login'))
+            return redirect(url_for('restricted'))
+        else:
+            return redirect(url_for('login'))
     
 
 @app.route("/register", methods=["GET","POST"])
