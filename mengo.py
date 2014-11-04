@@ -1,14 +1,21 @@
 from pymongo import MongoClient
 
-client = MongoClient('localhost',27017)
+client = MongoClient('localhost',21234)
 db=client.proj
 users=db.users
 
-def create_user(username, password):
-    user={
-        'username':username,
-        'password':password}
-    return users.insert(user)
+def user_user(username, password, studentid, pizza:
+    if 1 == db.find({'name':username}).count():
+        return False
+    else:
+        user={
+            'username':username,
+            'password':password,
+            'studentid':studentid;
+            'pizza':pizza;
+            }
+        users.insert(user)
+        return True
 
 def find_user(username):
     user = user.find_one({'username':username})
