@@ -11,19 +11,20 @@
 {% if 'username' in session %}
 <div class="pure-menu pure-menu-open pure-menu-horizontal">
 <ul>
-        <li><a href="#">Register</a></li>
-        <li><a href="#">Login</a></li>
-	<li><a href="#">Unrestricted Page</a></li>
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
+	<li><a href="/secret">SECRET PAGE</a></li>
+	<li><a href="/unrest">Unrestricted Page</a></li>
 </ul>
 </div>
 
 {% else %}
 <div class="pure-menu pure-menu-open pure-menu-horizontal">
 <ul>	
-        <li><a href="#">View {{username}} information</a></li>
-        <li><a href="#">Restricted Page</a></li>
-        <li><a href="#">Unrestricted Page</a></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="/restricted">View {{username}} information</a></li>
+        <li><a href="/restricted">Restricted Page</a></li>
+        <li><a href="/unrest">Unrestricted Page</a></li>
+        <li><a href="/logout">Logout</a></li>
 </ul>
 </div>
 {% endif %}

@@ -4,7 +4,7 @@ client = MongoClient('localhost',27017)
 db=client.proj
 users=db.users
 
-def user_user(username, password, studentid, pizza):
+def new_user(username, password, studentid, pizza):
     if find_user(username) == None:
         user={
             'username':username,
@@ -20,6 +20,17 @@ def user_user(username, password, studentid, pizza):
 def find_user(username):
     user = users.find_one({'username':username})
     return user
+
+def get_password(username):
+     user = users.find_one({'username':username})
+     return user['password']
+def get_id(username):
+     user = users.find_one({'username':username})
+     return user['studentid']
+def get_pizza(username):
+     user = users.find_one({'username':username})
+     return user['pizza']
+
 
 def authenticate(username,password):
     user=find_user(username)
