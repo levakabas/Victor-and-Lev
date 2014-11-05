@@ -5,9 +5,7 @@ db=client.proj
 users=db.users
 
 def user_user(username, password, studentid, pizza:
-    if 1 == db.find({'name':username}).count():
-        return False
-    else:
+    if find_user(username) == None:
         user={
             'username':username,
             'password':password,
@@ -16,6 +14,8 @@ def user_user(username, password, studentid, pizza:
             }
         users.insert(user)
         return True
+    else:
+        return False
 
 def find_user(username):
     user = user.find_one({'username':username})
