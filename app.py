@@ -55,8 +55,7 @@ def restricted():
         pizza = mengo.get_pizza(username)
         return render_template("restricted.html", username=username, password=password, studentid=studentid, pizza=pizza)
     else:
-        return redirect(url_for('login'))
-    
+        return render_template("login.html",errmess="You must be logged in to view this page")    
 @app.route("/register_success")
 def register_success():
     return render_template("register_success.html")
