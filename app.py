@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, session, escape, url_for
 import mengo
 
+app=Flask(__name__)
 @app.route("/", methods=["GET","POST"])
 @app.route("/login", methods=["GET","POST"])
 def login():
@@ -9,7 +10,7 @@ def login():
     else:
         username = request.form['username']
         password = request.form['password']
-        if authenticate(username,password):
+        if mengo.authenticate(username,password):
             session['username'] = request.form['username']  
             return redirect(url_for('restricted'))
         else:
@@ -32,7 +33,7 @@ def logout():
     return render_template("logout.html")
 
 @app.route("/unrest")
-def unrest();
+def unrest():
     return render_template("unrestricted.html")
 
 @app.route("/secret")
@@ -43,9 +44,9 @@ def secret():
 def restricted():
     if 'username' in session:
         username = escape(session['username'])
-        password = 
-        studentid = 
-        pizza = 
+        password = 'd'
+        studentid = 'd'
+        pizza = 'd'
         return render_tempalte("restricted.html", username=username, password=password, studentid=studentid, pizza=pizza)
     else:
         return redirect(url_for('login'))
