@@ -35,7 +35,8 @@ def register():
 
 @app.route("/logout")
 def logout():
-    return render_template("logout.html")
+    session.pop('username', None)
+    return redirect(url_for('login'))
 
 @app.route("/unrest")
 def unrest():
