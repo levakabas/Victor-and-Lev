@@ -5,17 +5,25 @@
 {% endblock css %}
 </head>
 
+{% if 'username' in session %}
 <div class="pure-menu pure-menu-open pure-menu-horizontal">
-    <ul>
+<ul>
         <li><a href="#">Register</a></li>
         <li><a href="#">Login</a></li>
 	<li><a href="#">Unrestricted Page</a></li>
-	
+</ul>
+</div>
+
+{% else %}
+<div class="pure-menu pure-menu-open pure-menu-horizontal">
+<ul>	
         <li><a href="#">View {{username}} information</a></li>
         <li><a href="#">Restricted Page</a></li>
+        <li><a href="#">Unrestricted Page</a></li>
         <li><a href="#">Logout</a></li>
-    </ul>
+</ul>
 </div>
+{% endif %}
 
 <body>
  {% block main %}
